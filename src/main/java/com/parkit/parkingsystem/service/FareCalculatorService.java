@@ -1,8 +1,15 @@
 package com.parkit.parkingsystem.service;
 
+import com.parkit.parkingsystem.config.DataBaseConfig;
+import com.parkit.parkingsystem.constants.DBConstants;
 import com.parkit.parkingsystem.constants.Fare;
+import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -16,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 public class FareCalculatorService {
 
     public void calculateFare(Ticket ticket){
+
+
         if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
             throw new IllegalArgumentException("Out time provided is incorrect:"+ticket.getOutTime().toString());
         }
@@ -27,6 +36,10 @@ public class FareCalculatorService {
         double calculeMinute = Math.floorDiv(diff,60) - calculeHeure * 60;
         double cal = calculeMinute/60;
         double calFinal = calculeHeure + cal ;
+
+        if (calFinal <= 0.5){
+            calFinal = 0.0;
+        }
 
 
         switch (ticket.getParkingSpot().getParkingType()){
