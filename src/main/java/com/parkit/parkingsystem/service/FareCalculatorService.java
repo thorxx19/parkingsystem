@@ -1,28 +1,16 @@
 package com.parkit.parkingsystem.service;
 
-import com.parkit.parkingsystem.config.DataBaseConfig;
-import com.parkit.parkingsystem.constants.DBConstants;
-import com.parkit.parkingsystem.constants.Fare;
-import com.parkit.parkingsystem.dao.TicketDAO;
-import com.parkit.parkingsystem.model.Ticket;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+
+
+import com.parkit.parkingsystem.constants.Fare;
+import com.parkit.parkingsystem.model.Ticket;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+
 
 public class FareCalculatorService {
 
-    public void calculateFare(Ticket ticket){
+    public void calculateFare(Ticket ticket, int lineCount){
 
 
         if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
@@ -42,13 +30,23 @@ public class FareCalculatorService {
         }
 
 
+
         switch (ticket.getParkingSpot().getParkingType()){
             case CAR: {
-                ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);
+                if (lineCount >= Fare.NUMBER_LINE){
+                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR)-((calFinal*Fare.CAR_RATE_PER_HOUR)*0.05));
+                }else{
+                    ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);
+                }
+
                 break;
             }
             case BIKE: {
-                ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);
+                if (lineCount >= Fare.NUMBER_LINE) {
+                    ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR)-((calFinal*Fare.BIKE_RATE_PER_HOUR)*0.05));
+                }else{
+                    ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);
+                }
                 break;
             }
             default: throw new IllegalArgumentException("Unkown Parking Type");
