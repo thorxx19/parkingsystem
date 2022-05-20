@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="parking-system" />
+        <module name="Testez_limplémentation_d'une_nouvelle_fonctionnalité_Java_Froidefond_Olivier" />
       </profile>
     </annotationProcessing>
   </component>
