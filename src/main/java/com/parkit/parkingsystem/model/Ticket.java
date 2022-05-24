@@ -1,5 +1,6 @@
 package com.parkit.parkingsystem.model;
 
+
 import java.util.Date;
 
 public class Ticket {
@@ -10,51 +11,51 @@ public class Ticket {
     private Date inTime;
     private Date outTime;
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
 
-    public ParkingSpot getParkingSpot() {
+    public ParkingSpot getParkingSpot(){
         return parkingSpot;
     }
 
-    public void setParkingSpot(ParkingSpot parkingSpot) {
+    public void setParkingSpot(ParkingSpot parkingSpot){
         this.parkingSpot = parkingSpot;
     }
 
-    public String getVehicleRegNumber() {
+    public String getVehicleRegNumber(){
         return vehicleRegNumber;
     }
 
-    public void setVehicleRegNumber(String vehicleRegNumber) {
+    public void setVehicleRegNumber(String vehicleRegNumber){
         this.vehicleRegNumber = vehicleRegNumber;
     }
 
-    public double getPrice() {
+    public double getPrice(){
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price){
         this.price = price;
     }
 
-    public Date getInTime() {
+    public Date getInTime(){
         return inTime;
     }
 
-    public void setInTime(Date inTime) {
+    public void setInTime(Date inTime){
         this.inTime = inTime;
     }
 
-    public Date getOutTime() {
+    public Date getOutTime(){
         return outTime;
     }
 
-    public void setOutTime(Date outTime) {
+    public void setOutTime(Date outTime){
         this.outTime = outTime;
     }
 }

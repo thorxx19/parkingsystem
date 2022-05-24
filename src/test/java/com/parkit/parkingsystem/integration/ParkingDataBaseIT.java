@@ -42,7 +42,7 @@ public class ParkingDataBaseIT {
     }
 
     @BeforeEach
-    private void setUpPerTest() {
+    private void setUpPerTest() throws Exception {
         when(inputReaderUtil.readSelection()).thenReturn(1);
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
@@ -52,17 +52,18 @@ public class ParkingDataBaseIT {
     private static void tearDown(){
     }
     @Test
-    public void testParkingLotExit() {
-        testParkingACar();
+    public void testParkingLotExit() throws Exception {
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        parkingService.processIncomingVehicle();
+        Thread.sleep(1000);
         parkingService.processExitingVehicle();
         Ticket ticket = ticketDAO.getTicket(inputReaderUtil.readVehicleRegistrationNumber());
         assertEquals(ticket.getPrice(),0.0);
-        //assertNotEquals(null,ticket.getOutTime());
+        assertNotEquals(null,ticket.getOutTime());
         //TODO: check that the fare generated and out time are populated correctly in the database
     }
     @Test
-    public void testParkingACar() {
+    public void testParkingACar() throws Exception {
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processIncomingVehicle();
         Ticket ticket = ticketDAO.getTicket(inputReaderUtil.readVehicleRegistrationNumber());

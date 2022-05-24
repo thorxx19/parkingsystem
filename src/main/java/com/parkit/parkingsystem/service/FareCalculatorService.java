@@ -36,7 +36,7 @@ public class FareCalculatorService {
             case CAR: {
                 if (lineCount >= Fare.NUMBER_LINE) {
                     ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * 0.05));
-                } else {
+                }else{
                     ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);
                 }
 
@@ -45,7 +45,7 @@ public class FareCalculatorService {
             case BIKE: {
                 if (lineCount >= Fare.NUMBER_LINE) {
                     ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * 0.05));
-                } else {
+                }else{
                     ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);
                 }
                 break;

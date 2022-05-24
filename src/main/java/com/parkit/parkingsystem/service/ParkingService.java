@@ -15,11 +15,11 @@ public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
 
-    private static final FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
 
-    private final InputReaderUtil inputReaderUtil;
-    private final ParkingSpotDAO parkingSpotDAO;
-    private final TicketDAO ticketDAO;
+    private InputReaderUtil inputReaderUtil;
+    private ParkingSpotDAO parkingSpotDAO;
+    private  TicketDAO ticketDAO;
 
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO){
         this.inputReaderUtil = inputReaderUtil;
@@ -54,13 +54,13 @@ public class ParkingService {
         }
     }
 
-    private String getVehichleRegNumber() {
+    private String getVehichleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
 
     public ParkingSpot getNextParkingNumberIfAvailable(){
-        int parkingNumber;
+        int parkingNumber=0;
         ParkingSpot parkingSpot = null;
         try{
             ParkingType parkingType = getVehichleType();

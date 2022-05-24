@@ -7,6 +7,7 @@ import org.apache.logging.log4j.util.Strings;
 
 import java.sql.*;
 
+
 public class DataBaseTestConfig extends DataBaseConfig {
 
     private static final Logger logger = LogManager.getLogger("DataBaseTestConfig");

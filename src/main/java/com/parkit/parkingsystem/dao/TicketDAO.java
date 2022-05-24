@@ -35,7 +35,7 @@ public class TicketDAO {
         } catch (Exception ex) {
             logger.error("Error fetching next available slot",ex);
             ex.printStackTrace();
-        } finally {
+        }finally{
             dataBaseConfig.closeConnection(con);
             return false;
         }
