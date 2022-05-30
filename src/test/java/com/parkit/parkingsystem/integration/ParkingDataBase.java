@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ParkingDataBaseIT {
+public class ParkingDataBase {
 
     private static final DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 
