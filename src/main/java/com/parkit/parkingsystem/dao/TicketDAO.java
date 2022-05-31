@@ -13,12 +13,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
+/**
+ * @author o.froidefond
+ */
 public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    /**
+     * fonction pour sauvegarder en bdd un ticket générer
+     * @param ticket avec les info
+     * @return l'execution
+     */
     public boolean saveTicket(Ticket ticket){
         Connection con = null;
         try {
@@ -40,6 +48,11 @@ public class TicketDAO {
         }
     }
 
+    /**
+     * Fonction pour faire une requête sur la bdd et récupérer un ticket
+     * @param vehicleRegNumber la plaque du véhicule
+     * @return le ticket récupérer
+     */
     public Ticket getTicket(String vehicleRegNumber) {
         Connection con = null;
         Ticket ticket = null;
@@ -69,6 +82,11 @@ public class TicketDAO {
         }
     }
 
+    /**
+     * fonction pour mettre a jour un ticket lors de test
+     * @param ticket ticket avec des info
+     * @return un boolean si la mise à jour a fonctionné
+     */
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
         try {
@@ -86,6 +104,12 @@ public class TicketDAO {
         }
         return false;
     }
+
+    /**
+     * fonction pour compter le nombre de ticket pour une plaque d'immatriculation
+     * @param vehicleRegNumber le numéro de la plaque
+     * @return le nombre de ticket trouver
+     */
     public int getAllTicketFromVehicle(String vehicleRegNumber) {
         Connection con = null;
 

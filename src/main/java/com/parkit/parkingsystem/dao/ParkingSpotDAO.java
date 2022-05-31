@@ -11,11 +11,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * @author o.froidefond
+ */
 public class ParkingSpotDAO {
     private static final Logger logger = LogManager.getLogger("ParkingSpotDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    /**
+     * fonction pour vérifié les places libre dans le parking
+     * @param parkingType type de parking (voiture,moto)
+     * @return l'emplacement pour le véhicule
+     */
     public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result=-1;
@@ -29,14 +37,19 @@ public class ParkingSpotDAO {
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
-        }catch (Exception ex){
-            logger.error("Error fetching next available slot",ex);
-        }finally {
+        } catch (Exception ex ){
+            logger.error("Error fetching next available slot",ex );
+        } finally {
             dataBaseConfig.closeConnection(con);
         }
         return result;
     }
 
+    /**
+     * Fonction pour remettre les emplacements du parking a 1 quand le véhicule libère la place.
+     * @param parkingSpot type de parking (voiture,moto)
+     * @return mise a jour de 0 --> 1
+     */
     public boolean updateParking(ParkingSpot parkingSpot){
         //update the availability fo that parking slot
         Connection con = null;

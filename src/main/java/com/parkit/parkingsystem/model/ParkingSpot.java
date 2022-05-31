@@ -2,11 +2,20 @@ package com.parkit.parkingsystem.model;
 
 import com.parkit.parkingsystem.constants.ParkingType;
 
+/**
+ * @author o.froidefond
+ */
 public class ParkingSpot {
     private int number;
     private ParkingType parkingType;
     private boolean isAvailable;
 
+    /**
+     * construct
+     * @param number l'emplacement dans le parking
+     * @param parkingType le type de véhicule
+     * @param isAvailable true ou false
+     */
     public ParkingSpot(int number, ParkingType parkingType, boolean isAvailable) {
         this.number = number;
         this.parkingType = parkingType;

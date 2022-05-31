@@ -5,45 +5,53 @@ import com.parkit.parkingsystem.model.Ticket;
 
 import java.util.Date;
 
-<span class="fc" id="L8">public class FareCalculatorService {</span>
+/**
+ * @author o.froidefond
+ */
+<span class="fc" id="L11">public class FareCalculatorService {</span>
 
+    /**
+     * fonction pour calculer le prix du ticket
+     * @param ticket un ticket avec ses infos
+     * @param lineCount Nombre de tickets pour ce véhicule
+     */
     public void calculateFare(Ticket ticket,int lineCount){
-<span class="pc bpc" id="L11" title="1 of 4 branches missed.">        if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){</span>
-<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot;+ticket.getOutTime().toString());</span>
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){</span>
+<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot;+ticket.getOutTime().toString());</span>
         }
 
-<span class="fc" id="L15">        Date in = ticket.getInTime();</span>
-<span class="fc" id="L16">        Date out = ticket.getOutTime();</span>
-<span class="fc" id="L17">        long diff = Math.abs(out.getTime() - in.getTime()) / 1000;</span>
-<span class="fc" id="L18">        double calculeHeure = Math.floorDiv(diff, 3600);</span>
-<span class="fc" id="L19">        double calculeMinute = Math.floorDiv(diff, 60) - calculeHeure * 60;</span>
-<span class="fc" id="L20">        double cal = calculeMinute / 60;</span>
-<span class="fc" id="L21">        double calFinal = calculeHeure + cal;</span>
+<span class="fc" id="L23">        Date in = ticket.getInTime();</span>
+<span class="fc" id="L24">        Date out = ticket.getOutTime();</span>
+<span class="fc" id="L25">        long diff = Math.abs(out.getTime() - in.getTime()) / 1000;</span>
+<span class="fc" id="L26">        double calculeHeure = Math.floorDiv(diff, 3600);</span>
+<span class="fc" id="L27">        double calculeMinute = Math.floorDiv(diff, 60) - calculeHeure * 60;</span>
+<span class="fc" id="L28">        double cal = calculeMinute / 60;</span>
+<span class="fc" id="L29">        double calFinal = calculeHeure + cal;</span>
 
         //TODO: Some tests are failing here. Need to check if this logic is correct
-<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (calFinal &lt;= 0.5) {</span>
-<span class="fc" id="L25">            calFinal = 0.0;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (calFinal &lt;= 0.5) {</span>
+<span class="fc" id="L33">            calFinal = 0.0;</span>
         }
 
-<span class="pc bpc" id="L28" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()){</span>
+<span class="pc bpc" id="L36" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()){</span>
             case CAR: {
-<span class="fc bfc" id="L30" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
-<span class="fc" id="L31">                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * 0.05));</span>
-                }else{
-<span class="fc" id="L33">                    ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);</span>
-                }
-<span class="fc" id="L35">                break;</span>
-            }
-            case BIKE: {
 <span class="fc bfc" id="L38" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
-<span class="fc" id="L39">                    ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * 0.05));</span>
+<span class="fc" id="L39">                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * 0.05));</span>
                 }else{
-<span class="fc" id="L41">                    ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);</span>
+<span class="fc" id="L41">                    ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);</span>
                 }
 <span class="fc" id="L43">                break;</span>
             }
-<span class="nc" id="L45">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
+            case BIKE: {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
+<span class="fc" id="L47">                    ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * 0.05));</span>
+                }else{
+<span class="fc" id="L49">                    ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);</span>
+                }
+<span class="fc" id="L51">                break;</span>
+            }
+<span class="nc" id="L53">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
         }
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L55">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

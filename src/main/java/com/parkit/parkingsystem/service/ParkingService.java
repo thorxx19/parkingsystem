@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
 
+/**
+ * @author o.froidefond
+ */
 public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
@@ -21,12 +24,21 @@ public class ParkingService {
     private ParkingSpotDAO parkingSpotDAO;
     private  TicketDAO ticketDAO;
 
+    /**
+     * construct
+     * @param inputReaderUtil
+     * @param parkingSpotDAO
+     * @param ticketDAO
+     */
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO){
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
     }
 
+    /**
+     * Fonction pour l'entrée d'un véhicule
+     */
     public void processIncomingVehicle() {
         try{
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -54,30 +66,43 @@ public class ParkingService {
         }
     }
 
+    /**
+     * fonction d'affichage et récupération du numéro du véhicule
+     * @return le numéro du véhicule
+     * @throws Exception
+     */
     private String getVehichleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
 
+    /**
+     * Fonction pour affecter un emplacement a un véhicule qui entre.
+     * @return parkspot
+     */
     public ParkingSpot getNextParkingNumberIfAvailable(){
-        int parkingNumber=0;
+        int parkingNumber;
         ParkingSpot parkingSpot = null;
-        try{
+        try {
             ParkingType parkingType = getVehichleType();
             parkingNumber = parkingSpotDAO.getNextAvailableSlot(parkingType);
-            if(parkingNumber > 0){
+            if (parkingNumber > 0){
                 parkingSpot = new ParkingSpot(parkingNumber,parkingType, true);
-            }else{
+            } else {
                 throw new Exception("Error fetching parking number from DB. Parking slots might be full");
             }
-        }catch(IllegalArgumentException ie){
+        } catch(IllegalArgumentException ie) {
             logger.error("Error parsing user input for type of vehicle", ie);
-        }catch(Exception e){
+        } catch(Exception e) {
             logger.error("Error fetching next available parking slot", e);
         }
         return parkingSpot;
     }
 
+    /**
+     * fonction pour afficher le choix du véhicule dans la console
+     * @return le type de véhicule
+     */
     private ParkingType getVehichleType(){
         System.out.println("Please select vehicle type from menu");
         System.out.println("1 CAR");
@@ -97,6 +122,9 @@ public class ParkingService {
         }
     }
 
+    /**
+     * Fonction pour effectuer une sortie du parking
+     */
     public void processExitingVehicle() {
         try{
             String vehicleRegNumber = getVehichleRegNumber();
