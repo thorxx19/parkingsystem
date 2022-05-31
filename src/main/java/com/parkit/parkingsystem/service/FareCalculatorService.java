@@ -15,9 +15,9 @@ public class FareCalculatorService {
      * @param ticket un ticket avec ses infos
      * @param lineCount Nombre de tickets pour ce véhicule
      */
-    public void calculateFare(Ticket ticket,int lineCount){
-        if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
-            throw new IllegalArgumentException("Out time provided is incorrect:"+ticket.getOutTime().toString());
+    public void calculateFare(Ticket ticket, int lineCount) {
+        if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
+            throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
 
         Date in = ticket.getInTime();
@@ -28,16 +28,16 @@ public class FareCalculatorService {
         double cal = calculeMinute / 60;
         double calFinal = calculeHeure + cal;
 
-        //TODO: Some tests are failing here. Need to check if this logic is correct
+
         if (calFinal <= 0.5) {
             calFinal = 0.0;
         }
 
-        switch (ticket.getParkingSpot().getParkingType()){
+        switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
                 if (lineCount >= Fare.NUMBER_LINE) {
                     ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * 0.05));
-                }else{
+                } else {
                     ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);
                 }
                 break;
@@ -45,7 +45,7 @@ public class FareCalculatorService {
             case BIKE: {
                 if (lineCount >= Fare.NUMBER_LINE) {
                     ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * 0.05));
-                }else{
+                } else {
                     ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);
                 }
                 break;

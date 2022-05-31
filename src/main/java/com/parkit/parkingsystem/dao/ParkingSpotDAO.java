@@ -20,25 +20,25 @@ public class ParkingSpotDAO {
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
     /**
-     * fonction pour vérifié les places libre dans le parking
+     * fonction pour vérifié les places libre dans le parking.
      * @param parkingType type de parking (voiture,moto)
      * @return l'emplacement pour le véhicule
      */
-    public int getNextAvailableSlot(ParkingType parkingType){
+    public int getNextAvailableSlot(ParkingType parkingType) {
         Connection con = null;
-        int result=-1;
+        int result = -1;
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.GET_NEXT_PARKING_SPOT);
             ps.setString(1, parkingType.toString());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 result = rs.getInt(1);;
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
-        } catch (Exception ex ){
-            logger.error("Error fetching next available slot",ex );
+        } catch (Exception ex) {
+            logger.error("Error fetching next available slot", ex);
         } finally {
             dataBaseConfig.closeConnection(con);
         }
@@ -50,7 +50,7 @@ public class ParkingSpotDAO {
      * @param parkingSpot type de parking (voiture,moto)
      * @return mise a jour de 0 --> 1
      */
-    public boolean updateParking(ParkingSpot parkingSpot){
+    public boolean updateParking(ParkingSpot parkingSpot) {
         //update the availability fo that parking slot
         Connection con = null;
         try {
@@ -61,10 +61,10 @@ public class ParkingSpotDAO {
             int updateRowCount = ps.executeUpdate();
             dataBaseConfig.closePreparedStatement(ps);
             return (updateRowCount == 1);
-        }catch (Exception ex){
-            logger.error("Error updating parking info",ex);
+        } catch (Exception ex) {
+            logger.error("Error updating parking info", ex);
             return false;
-        }finally {
+        } finally {
             dataBaseConfig.closeConnection(con);
         }
     }

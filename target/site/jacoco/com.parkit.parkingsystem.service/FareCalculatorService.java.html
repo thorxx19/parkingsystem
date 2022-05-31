@@ -15,9 +15,9 @@ import java.util.Date;
      * @param ticket un ticket avec ses infos
      * @param lineCount Nombre de tickets pour ce véhicule
      */
-    public void calculateFare(Ticket ticket,int lineCount){
-<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){</span>
-<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot;+ticket.getOutTime().toString());</span>
+    public void calculateFare(Ticket ticket, int lineCount) {
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {</span>
+<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime().toString());</span>
         }
 
 <span class="fc" id="L23">        Date in = ticket.getInTime();</span>
@@ -28,16 +28,16 @@ import java.util.Date;
 <span class="fc" id="L28">        double cal = calculeMinute / 60;</span>
 <span class="fc" id="L29">        double calFinal = calculeHeure + cal;</span>
 
-        //TODO: Some tests are failing here. Need to check if this logic is correct
+
 <span class="fc bfc" id="L32" title="All 2 branches covered.">        if (calFinal &lt;= 0.5) {</span>
 <span class="fc" id="L33">            calFinal = 0.0;</span>
         }
 
-<span class="pc bpc" id="L36" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()){</span>
+<span class="pc bpc" id="L36" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
             case CAR: {
 <span class="fc bfc" id="L38" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
 <span class="fc" id="L39">                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * 0.05));</span>
-                }else{
+                } else {
 <span class="fc" id="L41">                    ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);</span>
                 }
 <span class="fc" id="L43">                break;</span>
@@ -45,7 +45,7 @@ import java.util.Date;
             case BIKE: {
 <span class="fc bfc" id="L46" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
 <span class="fc" id="L47">                    ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * 0.05));</span>
-                }else{
+                } else {
 <span class="fc" id="L49">                    ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);</span>
                 }
 <span class="fc" id="L51">                break;</span>

@@ -6,11 +6,16 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * @author o.froidefond
- * class principal
+ * class principal.
  */
 public class App {
     private static final Logger logger = LogManager.getLogger("App");
-    public static void main(String[] args){
+
+    /**
+     * fonction principal.
+     * @param args non utilisé
+     */
+    public static void main(String[] args) {
         logger.info("Initializing Parking System");
         InteractiveShell.loadInterface();
     }
