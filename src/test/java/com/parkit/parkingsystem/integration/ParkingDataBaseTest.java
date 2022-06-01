@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ParkingDataBaseIT {
+public class ParkingDataBaseTest {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();

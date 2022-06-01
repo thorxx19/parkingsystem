@@ -57,5 +57,19 @@ public class ParkingServiceTest {
         parkingService.processExitingVehicle();
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
     }
+    @Test
+    public void processIncomingVehicleTest(){
+        try {
+            when(inputReaderUtil.readSelection()).thenReturn(1);
+            when(parkingSpotDAO.getNextAvailableSlot(any())).thenReturn(1);
+            parkingService.processIncomingVehicle();
+            Thread.sleep(1000);
+            parkingService.processExitingVehicle();
+            verify(parkingSpotDAO, Mockito.times(2)).updateParking(any(ParkingSpot.class));
 
+        } catch (Exception e) {
+
+        }
+
+    }
 }
