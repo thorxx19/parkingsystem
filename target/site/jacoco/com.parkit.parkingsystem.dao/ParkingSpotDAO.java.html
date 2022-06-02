@@ -37,8 +37,8 @@ import java.sql.ResultSet;
             }
 <span class="fc" id="L38">            dataBaseConfig.closeResultSet(rs);</span>
 <span class="fc" id="L39">            dataBaseConfig.closePreparedStatement(ps);</span>
-<span class="nc" id="L40">        } catch (Exception ex) {</span>
-<span class="nc" id="L41">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
+<span class="fc" id="L40">        } catch (Exception ex) {</span>
+<span class="fc" id="L41">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
         } finally {
 <span class="fc" id="L43">            dataBaseConfig.closeConnection(con);</span>
         }

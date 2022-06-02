@@ -66,9 +66,10 @@ public class ParkingServiceTest {
             Thread.sleep(1000);
             parkingService.processExitingVehicle();
             verify(parkingSpotDAO, Mockito.times(2)).updateParking(any(ParkingSpot.class));
+            verify(parkingSpotDAO, Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
 
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
 
     }
