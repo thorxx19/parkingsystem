@@ -50,6 +50,7 @@ public class ParkingDataBaseTest {
     }
 
     @Test
+    @DisplayName("test l'entrée du véhicule")
     public void testParkingACar(){
         try {
             ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -65,6 +66,7 @@ public class ParkingDataBaseTest {
     }
 
     @Test
+    @DisplayName("test l'entrée et la sortie du véhicule")
     public void testParkingLotExit(){
         try {
             ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
