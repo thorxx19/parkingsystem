@@ -62,8 +62,6 @@ public class ParkingDataBaseTest {
             logger.error("Error fetching next available slot", e);
             e.printStackTrace();
         }
-
-        //TODO: check that a ticket is actualy saved in DB and Parking table is updated with availability
     }
 
     @Test
@@ -80,8 +78,5 @@ public class ParkingDataBaseTest {
             logger.error("Error fetching next available slot", e);
             e.printStackTrace();
         }
-
-        //TODO: check that the fare generated and out time are populated correctly in the database
     }
-
 }

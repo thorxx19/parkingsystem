@@ -117,7 +117,7 @@ import java.sql.Timestamp;
         try {
 <span class="fc" id="L118">            con = dataBaseConfig.getConnection();</span>
 <span class="fc" id="L119">            PreparedStatement ps = con.prepareStatement(DBConstants.GET_ALL_TICKET);</span>
-            //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
+
 <span class="fc" id="L121">            ps.setString(1, vehicleRegNumber);</span>
 <span class="fc" id="L122">            ResultSet rs = ps.executeQuery();</span>
 <span class="pc bpc" id="L123" title="1 of 2 branches missed.">            if (rs.next()) {</span>

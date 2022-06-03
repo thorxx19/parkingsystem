@@ -30,7 +30,7 @@ public class InputReaderUtil {
     /**
      * fonction pour lire le numéro du véhicule.
      * @return le numéro du véhicule
-     * @throws Exception
+     * @throws Exception levée
      */
     public String readVehicleRegistrationNumber() throws Exception {
         try {

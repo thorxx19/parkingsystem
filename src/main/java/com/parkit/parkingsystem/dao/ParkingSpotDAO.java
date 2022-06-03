@@ -48,7 +48,7 @@ public class ParkingSpotDAO {
     /**
      * Fonction pour remettre les emplacements du parking a 1 quand le véhicule libère la place.
      * @param parkingSpot type de parking (voiture,moto)
-     * @return mise a jour de 0 --> 1
+     * @return mise a jour de 0 vers 1
      */
     public boolean updateParking(ParkingSpot parkingSpot) {
         //update the availability fo that parking slot
