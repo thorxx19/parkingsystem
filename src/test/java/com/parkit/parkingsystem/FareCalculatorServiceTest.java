@@ -60,7 +60,7 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    @DisplayName("vérifie que l'exeption et levée quand il manque le type de véhicule")
+    @DisplayName("vérifie que l'exeption est levée quand il manque le type de véhicule")
     public void calculateFareUnkownType(){
         Date inTime = new Date();
         inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
@@ -72,6 +72,20 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
 
         assertThrows(NullPointerException.class, () -> fareCalculatorService.calculateFare(ticket,0));
+    }
+    @Test
+    @DisplayName("vérifie que l'exception est lévée quand le type de véhicule correspond a aucun connu")
+    public void calculateFareTruckType(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.TRUCK,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        assertThrows(IllegalArgumentException.class, () -> fareCalculatorService.calculateFare(ticket,0));
     }
 
     @Test

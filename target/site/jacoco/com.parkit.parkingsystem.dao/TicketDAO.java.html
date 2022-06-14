@@ -74,8 +74,8 @@ import java.sql.Timestamp;
             }
 <span class="fc" id="L75">            dataBaseConfig.closeResultSet(rs);</span>
 <span class="fc" id="L76">            dataBaseConfig.closePreparedStatement(ps);</span>
-<span class="fc" id="L77">        } catch (Exception ex) {</span>
-<span class="fc" id="L78">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
+<span class="nc" id="L77">        } catch (Exception ex) {</span>
+<span class="nc" id="L78">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
         } finally {
 <span class="pc" id="L80">            dataBaseConfig.closeConnection(con);</span>
 <span class="pc" id="L81">            return ticket;</span>
@@ -134,4 +134,4 @@ import java.sql.Timestamp;
 <span class="nc" id="L134">        return 0;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

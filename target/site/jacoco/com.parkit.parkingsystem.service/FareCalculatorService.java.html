@@ -33,7 +33,7 @@ import java.util.Date;
 <span class="fc" id="L33">            calFinal = 0.0;</span>
         }
 
-<span class="pc bpc" id="L36" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
+<span class="fc bfc" id="L36" title="All 3 branches covered.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
             case CAR: {
 <span class="fc bfc" id="L38" title="All 2 branches covered.">                if (lineCount &gt;= Fare.NUMBER_LINE) {</span>
 <span class="fc" id="L39">                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * Fare.REDUCTION));</span>
@@ -50,8 +50,8 @@ import java.util.Date;
                 }
 <span class="fc" id="L51">                break;</span>
             }
-<span class="nc" id="L53">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
+<span class="fc" id="L53">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
         }
 <span class="fc" id="L55">    }</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
