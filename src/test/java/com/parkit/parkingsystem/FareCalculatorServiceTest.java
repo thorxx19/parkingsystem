@@ -5,6 +5,7 @@ import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.service.FareCalculatorService;
+import com.sun.prism.null3d.NULL3DPipeline;
 import org.junit.jupiter.api.*;
 
 import java.util.Date;
@@ -59,21 +60,6 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket, 0);
 
         assertEquals(ticket.getPrice(), BIKE_RATE_PER_HOUR);
-    }
-
-    @Test
-    @DisplayName("vérifie que l'exeption est levée quand il manque le type de véhicule")
-    public void calculateFareUnkownType() {
-        Date inTime = new Date();
-        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
-        Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.TRUCK, false);
-
-        ticket.setInTime(inTime);
-        ticket.setOutTime(outTime);
-        ticket.setParkingSpot(parkingSpot);
-
-        assertThrows(IllegalArgumentException.class, () -> fareCalculatorService.calculateFare(ticket, 0));
     }
 
     @Test
