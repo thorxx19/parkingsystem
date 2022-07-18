@@ -2,6 +2,7 @@ package com.parkit.parkingsystem.constants;
 
 /**
  * constants requête sql.
+ *
  * @author o.froidefond
  */
 public class DBConstants {

@@ -18,17 +18,18 @@ public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
 
-    private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    private static final FareCalculatorService fareCalculatorService = new FareCalculatorService();
 
-    private InputReaderUtil inputReaderUtil;
-    private ParkingSpotDAO parkingSpotDAO;
-    private TicketDAO ticketDAO;
+    private final InputReaderUtil inputReaderUtil;
+    private final ParkingSpotDAO parkingSpotDAO;
+    private final TicketDAO ticketDAO;
 
     /**
      * construct
+     *
      * @param inputReaderUtil object de type InputReaderUtil
-     * @param parkingSpotDAO object de type ParkingSpotDAO
-     * @param ticketDAO object de type TicketDAO
+     * @param parkingSpotDAO  object de type ParkingSpotDAO
+     * @param ticketDAO       object de type TicketDAO
      */
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
         this.inputReaderUtil = inputReaderUtil;
@@ -68,6 +69,7 @@ public class ParkingService {
 
     /**
      * fonction d'affichage et récupération du numéro du véhicule
+     *
      * @return le numéro du véhicule
      * @throws Exception
      */
@@ -78,6 +80,7 @@ public class ParkingService {
 
     /**
      * Fonction pour affecter un emplacement a un véhicule qui entre.
+     *
      * @return parkspot
      */
     public ParkingSpot getNextParkingNumberIfAvailable() {
@@ -101,6 +104,7 @@ public class ParkingService {
 
     /**
      * fonction pour afficher le choix du véhicule dans la console
+     *
      * @return le type de véhicule
      */
     private ParkingType getVehichleType() {

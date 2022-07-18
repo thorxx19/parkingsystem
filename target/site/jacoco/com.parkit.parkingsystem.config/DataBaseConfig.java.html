@@ -21,7 +21,7 @@ import java.sql.*;
     public Connection getConnection() throws ClassNotFoundException, SQLException {
 <span class="nc" id="L22">        logger.info(&quot;Create DB connection&quot;);</span>
 <span class="nc" id="L23">        Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
-<span class="nc" id="L24">        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3307/prod&quot;, &quot;root&quot;, &quot;rootroot&quot;);</span>
+<span class="nc" id="L24">        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/prod&quot;, &quot;root&quot;, &quot;rootroot&quot;);</span>
     }
 
     /**

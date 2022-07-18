@@ -12,7 +12,8 @@ public class ParkingSpot {
 
     /**
      * construct
-     * @param number l'emplacement dans le parking.
+     *
+     * @param number      l'emplacement dans le parking.
      * @param parkingType le type de véhicule
      * @param isAvailable true ou false
      */

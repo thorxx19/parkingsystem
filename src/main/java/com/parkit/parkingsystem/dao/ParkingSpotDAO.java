@@ -21,6 +21,7 @@ public class ParkingSpotDAO {
 
     /**
      * fonction pour vérifié les places libre dans le parking.
+     *
      * @param parkingType type de parking (voiture,moto)
      * @return l'emplacement pour le véhicule
      */
@@ -33,7 +34,7 @@ public class ParkingSpotDAO {
             ps.setString(1, parkingType.toString());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                result = rs.getInt(1);;
+                result = rs.getInt(1);
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
@@ -47,6 +48,7 @@ public class ParkingSpotDAO {
 
     /**
      * Fonction pour remettre les emplacements du parking a 1 quand le véhicule libère la place.
+     *
      * @param parkingSpot type de parking (voiture,moto)
      * @return mise a jour de 0 vers 1
      */

@@ -13,6 +13,7 @@ public class App {
 
     /**
      * fonction principal.
+     *
      * @param args non utilisé
      */
     public static void main(String[] args) {

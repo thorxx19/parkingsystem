@@ -12,7 +12,8 @@ public class FareCalculatorService {
 
     /**
      * fonction pour calculer le prix du ticket
-     * @param ticket un ticket avec ses infos
+     *
+     * @param ticket    un ticket avec ses infos
      * @param lineCount Nombre de tickets pour ce véhicule
      */
     public void calculateFare(Ticket ticket, int lineCount) {
@@ -50,7 +51,8 @@ public class FareCalculatorService {
                 }
                 break;
             }
-            default: throw new IllegalArgumentException("Unkown Parking Type");
+            default:
+                throw new IllegalArgumentException("Unkown Parking Type");
         }
     }
 }

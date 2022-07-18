@@ -2,6 +2,7 @@ package com.parkit.parkingsystem.constants;
 
 /**
  * constantes pour le calcule des tickets
+ *
  * @author o.froidefond
  */
 public class Fare {

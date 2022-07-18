@@ -14,18 +14,20 @@ public class DataBaseConfig {
 
     /**
      * fonction de connection a al bdd.
+     *
      * @return l'url de la bdd
      * @throws ClassNotFoundException exception
-     * @throws SQLException exception sql
+     * @throws SQLException           exception sql
      */
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/prod", "root", "rootroot");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/prod", "root", "rootroot");
     }
 
     /**
      * fonction pour fermer la connection a la bdd.
+     *
      * @param con connection
      */
     public void closeConnection(Connection con) {
@@ -41,6 +43,7 @@ public class DataBaseConfig {
 
     /**
      * fonction pour fermer la préparation sql
+     *
      * @param ps preparation sql
      */
     public void closePreparedStatement(PreparedStatement ps) {
@@ -56,6 +59,7 @@ public class DataBaseConfig {
 
     /**
      * foncton pour fermer le result
+     *
      * @param rs le result
      */
     public void closeResultSet(ResultSet rs) {

@@ -24,6 +24,7 @@ public class TicketDAO {
 
     /**
      * fonction pour sauvegarder en bdd un ticket générer
+     *
      * @param ticket avec les info
      * @return l'execution
      */
@@ -38,10 +39,10 @@ public class TicketDAO {
             ps.setString(2, ticket.getVehicleRegNumber());
             ps.setDouble(3, ticket.getPrice());
             ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));
-            ps.setTimestamp(5, (ticket.getOutTime() == null) ? null: (new Timestamp(ticket.getOutTime().getTime())));
+            ps.setTimestamp(5, (ticket.getOutTime() == null) ? null : (new Timestamp(ticket.getOutTime().getTime())));
             return ps.execute();
         } catch (Exception ex) {
-            logger.error("Error fetching next available slot",ex);
+            logger.error("Error fetching next available slot", ex);
         } finally {
             dataBaseConfig.closeConnection(con);
             return false;
@@ -50,6 +51,7 @@ public class TicketDAO {
 
     /**
      * Fonction pour faire une requête sur la bdd et récupérer un ticket
+     *
      * @param vehicleRegNumber la plaque du véhicule
      * @return le ticket récupérer
      */
@@ -84,6 +86,7 @@ public class TicketDAO {
 
     /**
      * fonction pour mettre a jour un ticket lors de test
+     *
      * @param ticket ticket avec des info
      * @return un boolean si la mise à jour a fonctionné
      */
@@ -107,6 +110,7 @@ public class TicketDAO {
 
     /**
      * fonction pour compter le nombre de ticket pour une plaque d'immatriculation
+     *
      * @param vehicleRegNumber le numéro de la plaque
      * @return le nombre de ticket trouver
      */
