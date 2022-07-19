@@ -1,6 +1,6 @@
 package com.parkit.parkingsystem.service;
 
-import com.parkit.parkingsystem.constants.Fare;
+import static com.parkit.parkingsystem.constants.Fare.*;
 import com.parkit.parkingsystem.model.Ticket;
 
 import java.util.Date;
@@ -28,24 +28,24 @@ public class FareCalculatorService {
         double cal = calculeMinute / 60;
         double calFinal = calculeHeure + cal;
 
-        if (calFinal <= 0.5) {
+        if (calFinal <= FREE_TIME) {
             calFinal = 0.0;
         }
 
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
-                if (lineCount >= Fare.NUMBER_LINE) {
-                    ticket.setPrice((calFinal * Fare.CAR_RATE_PER_HOUR) - ((calFinal * Fare.CAR_RATE_PER_HOUR) * Fare.REDUCTION));
+                if (lineCount >= NUMBER_LINE) {
+                    ticket.setPrice((calFinal * CAR_RATE_PER_HOUR) - ((calFinal * CAR_RATE_PER_HOUR) * REDUCTION));
                 } else {
-                    ticket.setPrice(calFinal * Fare.CAR_RATE_PER_HOUR);
+                    ticket.setPrice(calFinal * CAR_RATE_PER_HOUR);
                 }
                 break;
             }
             case BIKE: {
-                if (lineCount >= Fare.NUMBER_LINE) {
-                    ticket.setPrice((calFinal * Fare.BIKE_RATE_PER_HOUR) - ((calFinal * Fare.BIKE_RATE_PER_HOUR) * Fare.REDUCTION));
+                if (lineCount >= NUMBER_LINE) {
+                    ticket.setPrice((calFinal * BIKE_RATE_PER_HOUR) - ((calFinal * BIKE_RATE_PER_HOUR) * REDUCTION));
                 } else {
-                    ticket.setPrice(calFinal * Fare.BIKE_RATE_PER_HOUR);
+                    ticket.setPrice(calFinal * BIKE_RATE_PER_HOUR);
                 }
                 break;
             }
