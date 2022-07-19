@@ -234,6 +234,10 @@
                     <excludes>
                         <exclude>**/model/*</exclude>
                         <exclude>**/constants/*</exclude>
+                        <exclude>**/InteractiveShell.class</exclude>
+                        <exclude>**/config/*</exclude>
+                        <exclude>**/util/*</exclude>
+                        <exclude>**/App.class</exclude>
                     </excludes>
                 </configuration>
                 <reportSets>

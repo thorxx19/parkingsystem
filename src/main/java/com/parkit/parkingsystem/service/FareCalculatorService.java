@@ -20,7 +20,6 @@ public class FareCalculatorService {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
-
         Date in = ticket.getInTime();
         Date out = ticket.getOutTime();
         long diff = Math.abs(out.getTime() - in.getTime()) / 1000;
@@ -28,7 +27,6 @@ public class FareCalculatorService {
         double calculeMinute = Math.floorDiv(diff, 60) - calculeHeure * 60;
         double cal = calculeMinute / 60;
         double calFinal = calculeHeure + cal;
-
 
         if (calFinal <= 0.5) {
             calFinal = 0.0;

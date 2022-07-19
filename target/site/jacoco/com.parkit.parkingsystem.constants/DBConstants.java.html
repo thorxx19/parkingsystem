@@ -2,9 +2,10 @@
 
 /**
  * constants requête sql.
+ *
  * @author o.froidefond
  */
-<span class="nc" id="L7">public class DBConstants {</span>
+<span class="nc" id="L8">public class DBConstants {</span>
 
     public static final String GET_NEXT_PARKING_SPOT = &quot;select min(PARKING_NUMBER) from parking where AVAILABLE = true and TYPE = ?&quot;;
     public static final String UPDATE_PARKING_SPOT = &quot;update parking set available = ? where PARKING_NUMBER = ?&quot;;
